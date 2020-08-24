@@ -1,5 +1,5 @@
 console.log("We Don't Go To Ravenholm")
-const endPoint = "http://localhost:3000/api/v1/records"
+const endPoint = "http://localhost:3000/records"
 
 //load DOM
 document.addEventListener('DOMContentLoaded', () => {
@@ -81,13 +81,12 @@ function sortByDate(){
 }
 
 function getChart() {
-    const chartEndPoint = "http://localhost:3000/api/v1/charts";
-    
+    const chartEndPoint = "http://localhost:3000/chart";
     fetch(chartEndPoint)
     .then(response => response.json())
     .then(chart => {
-        chart.data.forEach(chart => {
-            let newChart = new Chart(chart.id, chart.attributes);
+        chart.forEach(chart => {
+            let newChart = new Chart(chart);
             document.querySelector('#chart-container').innerHTML += newChart.renderChart();
         });
     });
@@ -97,8 +96,8 @@ function getRecords() {
     fetch(endPoint)
     .then(response => response.json())
     .then(records => { //gets the records data 
-        records.data.forEach(record => { //data is the object key for the array value
-            let newRecord = new Record(record.id, record.attributes) //creates new instance of Record class
+        records.forEach(record => { //data is the object key for the array value
+            let newRecord = new Record(record) //creates new instance of Record class
             document.querySelector('#table-body').innerHTML += newRecord.renderRecord();
         }) 
     })

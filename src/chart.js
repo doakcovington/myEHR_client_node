@@ -1,11 +1,11 @@
 console.log("chart.js");
 
 class Chart {
-    constructor(id, chartAttributes) {
-        this.id = id;
-        this.name = chartAttributes.name;
-        this.pcp = chartAttributes.pcp;
-        this.dob = chartAttributes.dob;
+    constructor(chart) {
+        this.id = chart.id;
+        this.name = chart.name;
+        this.pcp = chart.pcp;
+        this.dob = chart.dob;
         Chart.all.push(this);
     }
 

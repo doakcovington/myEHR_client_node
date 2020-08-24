@@ -1,15 +1,15 @@
 console.log("record.js")
 class Record {
-    constructor(id, recordAttributes) {
-        this.id = id
-        this.systolic = recordAttributes.systolic
-        this.diastolic = recordAttributes.diastolic
-        this.created_at = recordAttributes.created_at
-        this.temperature = recordAttributes.temperature
-        this.pulse = recordAttributes.pulse
-        this.pain = recordAttributes.pain
-        this.comments = recordAttributes.comments
-        this.chart = recordAttributes.chart
+    constructor(record) {
+        this.id = record.id
+        this.systolic = record.systolic
+        this.diastolic = record.diastolic
+        this.created_at = record.created_at
+        this.temperature = record.temperature
+        this.pulse = record.pulse
+        this.pain = record.pain
+        this.comments = record.comments
+        this.chart = record.chart
         Record.all.push(this) //pushes each new instance into the array
     }
 
