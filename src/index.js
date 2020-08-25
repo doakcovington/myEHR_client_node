@@ -136,19 +136,20 @@ function postRecord(systolic, diastolic, temperature, pulse, pain, comments, cha
     //console.log(temperature, pulse, pain, comments, chart_id)
 
     let bodyData = {systolic, diastolic, temperature, pulse, pain, comments, chart_id}
-
+    console.log(bodyData)
     fetch(endPoint, {
         method: "POST",
         headers: {"Content-Type": "application/json"},
         body: JSON.stringify(bodyData)
     })
-    .then(response => response.json())
-    .then(record => {
-        const recordData = record.data
-        let newRecord = new Record(recordData.id, recordData.attributes) //creates new instance of Record class 
-        document.querySelector('#table-body').innerHTML += newRecord.renderRecord()
-    })
-    // .catch((error) => {
-    //     console.log(error);
+    .then(response => response.text())
+    .then(text =>  console.log(text))
+    // .then(record => {
+    //     console.log(record)
+    //     let newRecord = new Record(record) //creates new instance of Record class 
+    //     document.querySelector('#table-body').innerHTML += newRecord.renderRecord()
     // })
+    .catch((error) => {
+        console.log(error);
+    })
 }
